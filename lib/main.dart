@@ -34,79 +34,90 @@ class _MyAppState extends State<MyApp> {
               ),
             ],
           ),
-          actions: const [
-            Icon(
+          actions: [
+            const Icon(
               Icons.notifications_none,
               color: Colors.deepPurple,
               size: 30,
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
-            CircleAvatar(
-              backgroundImage: AssetImage(
-                'assets/cure.jpg',
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialog(
+                        title: Text('change profile'),
+                        content: Text('you have to change profile'),
+                      );
+                    });
+              },
+              child: const CircleAvatar(
+                backgroundImage: AssetImage(
+                  'assets/cure.jpg',
+                ),
+                radius: 24,
               ),
-              radius: 24,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
           ],
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Wellcome Back',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Wellcome Back',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                const Text(
+                  'Creative Mints',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: 'Search',
+                    filled: true,
+                    fillColor: Colors.grey.withOpacity(0.2),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Creative Mints',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 18,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      hintText: 'Search',
-                      filled: true,
-                      fillColor: Colors.grey.withOpacity(0.2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
 
-                  //
-                  // transaction Budget containers
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
+                //
+                // transaction Budget containers
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Padding(
                         padding: const EdgeInsets.only(right: 25, top: 12),
                         child: Container(
-                          width: 170,
                           height: 170,
                           decoration: BoxDecoration(
                             color: Colors.green[500],
@@ -151,14 +162,15 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                      Padding(
+                    ),
+                    Expanded(
+                      child: Padding(
                         padding: const EdgeInsets.only(top: 12),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          width: 170,
                           height: 170,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -199,20 +211,21 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  //
-                  // Recommendations and credit cards
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                //
+                // Recommendations and credit cards
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Padding(
                         padding: const EdgeInsets.only(right: 37, top: 12),
                         child: Container(
-                          width: 170,
                           height: 170,
                           decoration: BoxDecoration(
                             color: Colors.blue[500],
@@ -257,14 +270,15 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                      Padding(
+                    ),
+                    Expanded(
+                      child: Padding(
                         padding: const EdgeInsets.only(top: 12),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.deepPurple[500],
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          width: 170,
                           height: 170,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
@@ -303,35 +317,37 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                  // container rows ended
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+                // container rows ended
 
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: Text(
-                      'Choose a category',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Choose a category',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Container(
                           width: 170,
                           height: 50,
                           decoration: BoxDecoration(
@@ -363,8 +379,12 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 170,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Expanded(
+                        child: Container(
                           height: 50,
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
@@ -372,32 +392,34 @@ class _MyAppState extends State<MyApp> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Row(children: const [
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.account_balance_wallet_outlined,
-                                  size: 30,
-                                  color: Colors.deepPurple,
+                            child: Row(
+                              children: const [
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.account_balance_wallet_outlined,
+                                    size: 30,
+                                    color: Colors.deepPurple,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Make a \n Payment',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
+                                SizedBox(
+                                  width: 8,
                                 ),
-                              ),
-                            ]),
+                                Text(
+                                  'Make a \n Payment',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
